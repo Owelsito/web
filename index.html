@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NEW WORLD RP | Próximamente</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -73,7 +73,7 @@
             z-index: 2;
             text-align: center;
             padding: 20px;
-            max-width: 900px;
+            max-width: 1000px; /* Aumentado un poco para que quepa el texto */
             animation: fadeUp 1.2s ease-out;
         }
 
@@ -91,28 +91,35 @@
             backdrop-filter: blur(5px);
         }
 
+        /* --- TÍTULO PRINCIPAL (MODIFICADO) --- */
         .hero h1 {
-            font-size: clamp(3.5rem, 8vw, 5.5rem);
-            font-weight: 800;
-            line-height: 1;
+            /* Ajustamos el tamaño para que quepa todo en una línea */
+            font-size: clamp(2.5rem, 6vw, 5.5rem); 
+            font-weight: 900;
+            line-height: 1.1;
             margin-bottom: 20px;
             color: #fff;
-            text-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            text-shadow: 0 5px 20px rgba(0,0,0,0.9);
+            
+            /* ESTO asegura que NEW WORLD y RP no se separen */
+            white-space: nowrap; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px; /* Espacio entre las palabras y el RP */
+            flex-wrap: wrap; /* En móviles muy pequeños, permite bajar si es necesario */
         }
 
+        /* --- NEÓN RP HUECO (CORREGIDO) --- */
         .hero h1 span { 
-            color: transparent;
-            -webkit-text-stroke: 2px var(--accent-gold);
+            color: transparent; /* Interior transparente */
+            /* Borde dorado sólido */
+            -webkit-text-stroke: 2px var(--accent-gold); 
+            /* Filtro de sombra para simular luz de neón real alrededor del borde */
+            filter: drop-shadow(0 0 5px var(--accent-gold)) drop-shadow(0 0 15px var(--accent-gold));
+            
             position: relative;
-        }
-        
-        .hero h1 span::before {
-            content: 'RP';
-            position: absolute;
-            left:0;
-            color: var(--accent-gold);
-            opacity: 0.6;
-            filter: blur(8px);
+            display: inline-block;
         }
 
         .hero p.sub-headline {
@@ -155,10 +162,26 @@
 
         .section-separator {
             text-align: center;
-            margin-bottom: 50px;
-            opacity: 0.7;
+            margin-bottom: 60px;
         }
-        .section-separator h2 { font-size: 2rem; color: #fff; }
+        
+        .section-separator h2 { 
+            font-size: 2.2rem; 
+            color: #fff; 
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+        
+        .section-separator h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: var(--accent-gold);
+            margin: 15px auto 0;
+            border-radius: 2px;
+            box-shadow: 0 0 15px var(--accent-gold);
+        }
 
         .cards-grid {
             display: grid;
@@ -181,7 +204,6 @@
             overflow: hidden;
         }
 
-        /* Efecto de borde brillante suave al pasar el mouse */
         .feature-card::before {
             content: '';
             position: absolute;
@@ -189,12 +211,13 @@
             background: var(--accent-gold);
             opacity: 0;
             transition: 0.3s;
+            box-shadow: 0 0 15px var(--accent-gold);
         }
 
         .feature-card:hover {
             transform: translateY(-5px);
             border-color: #333;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
             background: #161616;
         }
 
@@ -219,13 +242,14 @@
             color: var(--accent-gold); 
             font-size: 2.5rem; 
             margin-bottom: 5px;
-            text-shadow: 0 0 15px rgba(255, 193, 7, 0.2);
+            text-shadow: 0 0 20px rgba(255, 193, 7, 0.4);
             transition: 0.3s;
         }
 
         .feature-card:hover .card-body h3 i {
             transform: scale(1.1);
             color: #ffd54f;
+            text-shadow: 0 0 30px rgba(255, 193, 7, 0.7);
         }
 
         .card-body p {
