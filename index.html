@@ -3,62 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEW WORLD RP | Próximamente</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>NEW WORLD RP | Servidor FiveM España</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         /* --- RESET & BASICS --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: #0a0a0a;
-            color: #ffffff;
-            overflow-x: hidden;
+            background-color: #0a0a0a; /* Fondo principal muy oscuro */
+            color: #e0e0e0; /* Texto blanco roto para menos fatiga visual */
+            line-height: 1.6;
         }
+        h1, h2, h3, .cta-button { font-family: 'Montserrat', sans-serif; text-transform: uppercase; }
+        a { text-decoration: none; transition: all 0.3s ease; }
 
-        h1, h2, h3 {
-            font-family: 'Montserrat', sans-serif;
-            text-transform: uppercase;
-        }
-
-        a {
-            text-decoration: none;
-            color: white;
-            transition: 0.3s;
-        }
-
-        /* --- VARIABLES --- */
+        /* --- PALETA DE COLORES --- */
         :root {
-            --primary: #f59e0b; /* Color Oro/Ambar */
-            --dark: #111111;
-            --dark-overlay: rgba(0, 0, 0, 0.75);
+            --accent-gold: #ffc107; /* Color de acento dorado/amarillo */
+            --discord-blue: #5865F2;
+            --bg-dark: #0a0a0a;
+            --bg-card: #141414;
+            --text-muted: #aaaaaa;
         }
 
-        /* --- HERO SECTION (La parte principal) --- */
+        /* --- HERO SECTION (Cabecera Principal) --- */
         .hero {
-            height: 100vh;
-            width: 100%;
-            /* IMAGEN DE FONDO: Cambia la URL por una captura de tu servidor o una foto estilo GTA */
-            background-image: url('https://images.unsplash.com/photo-1605218427306-635ba2439af2?q=80&w=2070&auto=format&fit=crop'); 
-            background-size: cover;
-            background-position: center;
+            min-height: 90vh; /* Ocupa casi toda la pantalla inicial */
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
+            /* IMAGEN DE FONDO: Un atardecer vibrante en Los Santos */
+            background: url('https://images4.alphacoders.com/587/587614.jpg') no-repeat center center/cover;
+            border-bottom: 3px solid var(--accent-gold);
         }
 
+        /* Capa oscura sobre la imagen para que se lea el texto */
         .hero::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(to bottom, var(--dark-overlay), #0a0a0a);
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(10,10,10,0.6) 100%);
+            z-index: 1;
         }
 
         .hero-content {
@@ -66,126 +54,172 @@
             z-index: 2;
             text-align: center;
             padding: 20px;
-            animation: fadeIn 1.5s ease-out;
+            max-width: 800px;
+            animation: fadeUp 1.2s ease-out;
         }
 
-        .status-badge {
-            background-color: var(--primary);
-            color: #000;
-            padding: 5px 15px;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            margin-bottom: 20px;
+        .badge-status {
             display: inline-block;
+            background: rgba(255, 193, 7, 0.2);
+            color: var(--accent-gold);
+            border: 1px solid var(--accent-gold);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            backdrop-filter: blur(5px);
         }
 
         .hero h1 {
-            font-size: 4rem;
-            font-weight: 900;
-            margin-bottom: 10px;
-            letter-spacing: -2px;
-            text-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
+            font-size: clamp(3rem, 8vw, 5rem); /* Tamaño adaptable */
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 20px;
+            color: #fff;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.5);
         }
 
-        .hero h1 span {
-            color: var(--primary);
+        .hero h1 span { color: var(--accent-gold); }
+
+        .hero p.sub-headline {
+            font-size: 1.25rem;
+            color: #d0d0d0;
+            margin-bottom: 40px;
+            font-weight: 300;
         }
 
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto 40px auto;
-            color: #cccccc;
-        }
-
-        .cta-button {
-            background-color: #5865F2; /* Color Discord */
-            padding: 15px 40px;
-            border-radius: 5px;
-            font-weight: bold;
+        /* Botón de Discord */
+        .discord-btn {
+            background-color: var(--discord-blue);
+            color: white;
+            padding: 18px 45px;
+            border-radius: 4px;
+            font-weight: 700;
             font-size: 1.1rem;
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            box-shadow: 0 4px 15px rgba(88, 101, 242, 0.4);
+            gap: 12px;
+            box-shadow: 0 10px 25px -10px rgba(88, 101, 242, 0.6);
+            border: none;
+            cursor: pointer;
         }
 
-        .cta-button:hover {
-            transform: translateY(-3px);
+        .discord-btn:hover {
             background-color: #4752c4;
-            box-shadow: 0 6px 20px rgba(88, 101, 242, 0.6);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px -10px rgba(88, 101, 242, 0.8);
         }
 
-        /* --- FEATURES SECTION --- */
-        .features {
-            padding: 80px 20px;
-            background-color: #0a0a0a;
+        /* --- SECCIÓN DE CARACTERÍSTICAS VISUALES --- */
+        .features-section {
+            padding: 100px 20px;
+            background: linear-gradient(to bottom, #0a0a0a, #111111);
+        }
+
+        .section-title {
             text-align: center;
-        }
-
-        .features h2 {
-            font-size: 2.5rem;
             margin-bottom: 60px;
         }
 
-        .grid-container {
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+        }
+        .section-title span { color: var(--accent-gold); }
+
+        /* Grid de Tarjetas */
+        .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        .card {
-            background: #161616;
-            padding: 40px 20px;
-            border-radius: 10px;
-            border: 1px solid #333;
-            transition: 0.3s;
+        /* Diseño de Tarjeta Individual */
+        .feature-card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            overflow: hidden; /* Para que la imagen no se salga al hacer zoom */
+            box-shadow: 0 10px 30px -15px rgba(0,0,0,0.5);
+            transition: transform 0.3s, border-color 0.3s;
+            border: 1px solid #222;
+            display: flex;
+            flex-direction: column;
         }
 
-        .card:hover {
-            border-color: var(--primary);
+        .feature-card:hover {
             transform: translateY(-10px);
+            border-color: var(--accent-gold);
         }
 
-        .card i {
-            font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 20px;
+        /* Contenedor de la imagen en la tarjeta */
+        .card-img-header {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
         }
 
-        .card h3 {
+        .card-img-header img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* La imagen se adapta sin deformarse */
+            transition: transform 0.5s ease;
+        }
+
+        /* Efecto Zoom en la imagen al pasar el ratón por la tarjeta */
+        .feature-card:hover .card-img-header img {
+            transform: scale(1.1);
+        }
+
+        /* Overlay sutil sobre la imagen de la tarjeta */
+        .card-img-header::after {
+            content: '';
+            position: absolute;
+            top:0; left:0; width:100%; height:100%;
+            background: linear-gradient(to top, var(--bg-card) 0%, transparent 50%);
+        }
+
+        .card-body {
+            padding: 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-body h3 {
+            font-size: 1.4rem;
             margin-bottom: 15px;
-            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
+        
+        .card-body h3 i { color: var(--accent-gold); font-size: 1.1rem;}
 
-        .card p {
-            color: #aaa;
-            line-height: 1.6;
+        .card-body p {
+            color: var(--text-muted);
+            font-weight: 400;
+            font-size: 0.95rem;
         }
 
         /* --- FOOTER --- */
         footer {
+            background: #050505;
             padding: 40px 20px;
             text-align: center;
             border-top: 1px solid #222;
-            color: #666;
-            font-size: 0.9rem;
+            color: #555;
         }
+        footer p.highlight { color: #888; margin-bottom: 10px; font-weight: 500;}
 
-        /* --- ANIMATIONS --- */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+        /* Animación de entrada */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* --- RESPONSIVE --- */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .hero p { font-size: 1rem; }
         }
     </style>
 </head>
@@ -193,41 +227,62 @@
 
     <header class="hero">
         <div class="hero-content">
-            <div class="status-badge">PRÓXIMAMENTE</div>
+            <div class="badge-status">
+                <i class="fas fa-clock"></i> PRÓXIMAMENTE EN ESPAÑA
+            </div>
             <h1>NEW WORLD <span>RP</span></h1>
-            <p>El servidor de Roleplay ambientado en España que estabas esperando. <br>
-            Economía real, policía nacional, sistemas únicos y una comunidad seria.</p>
+            <p class="sub-headline">
+                Una nueva experiencia de roleplay serio está a punto de comenzar. 
+                <br>Prepárate para definir tu historia en la ciudad.
+            </p>
             
-            <a href="https://discord.gg/TU_ENLACE_AQUI" class="cta-button" target="_blank">
-                <i class="fab fa-discord"></i> Unirse a la Espera
+            <a href="https://discord.gg/TU_ENLACE_AQUI" target="_blank" class="discord-btn">
+                <i class="fab fa-discord"></i> UNIRSE A LA COMUNIDAD
             </a>
         </div>
     </header>
 
-    <section class="features">
-        <h2>¿Qué encontrarás en New World?</h2>
-        <div class="grid-container">
-            <div class="card">
-                <i class="fas fa-flag"></i>
-                <h3>Ambientación Española</h3>
-                <p>Vehículos oficiales del CNP, Guardia Civil y EMS. Calles, locales y ropas adaptadas para una inmersión total en España.</p>
+    <section class="features-section">
+        <div class="section-title">
+            <h2>¿Por qué elegir <span>New World</span>?</h2>
+        </div>
+
+        <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-img-header">
+                    <img src="https://i.pinimg.com/originals/9c/73/3e/9c733e50d17046137e9e7826eb4ee357.jpg" alt="Policía GTA V">
+                </div>
+                <div class="card-body">
+                    <h3><i class="fas fa-shield-alt"></i> Cuerpos de Seguridad</h3>
+                    <p>Vive el rol policial al máximo con vehículos adaptados al CNP y Guardia Civil, normativas realistas y operativos coordinados.</p>
+                </div>
             </div>
-            <div class="card">
-                <i class="fas fa-balance-scale"></i>
-                <h3>Roleplay Serio</h3>
-                <p>Normativas estrictas para garantizar roles de calidad. Buscamos historias profundas, no "Guns & Win".</p>
+
+            <div class="feature-card">
+                <div class="card-img-header">
+                    <img src="https://wallpapers.com/images/hd/gta-5-heist-artwork-y1sn7b66474704l9.jpg" alt="Crimen GTA V">
+                </div>
+                <div class="card-body">
+                    <h3><i class="fas fa-mask"></i> Crimen Organizado</h3>
+                    <p>Desde bandas callejeras hasta mafias de alto nivel. Un sistema económico diseñado para que el riesgo merezca la pena.</p>
+                </div>
             </div>
-            <div class="card">
-                <i class="fas fa-microchip"></i>
-                <h3>Optimización Total</h3>
-                <p>Scripts propios y exclusivos diseñados para funcionar con fluidez. Disfruta de los 60FPS estables mientras roleas.</p>
+
+            <div class="feature-card">
+                <div class="card-img-header">
+                    <img src="https://images5.alphacoders.com/438/438923.jpg" alt="Coches de lujo GTA V">
+                </div>
+                <div class="card-body">
+                    <h3><i class="fas fa-city"></i> Inmersión y Calidad</h3>
+                    <p>Scripts exclusivos, mapeados únicos y una optimización obsesiva para garantizar la mejor experiencia visual y de rendimiento.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2024 New World RP España. Todos los derechos reservados.</p>
-        <p style="margin-top: 10px;">FiveM Server</p>
+        <p class="highlight">New World RP - FiveM Server España</p>
+        <p>&copy; 2024 Todos los derechos reservados. No afiliado con Rockstar Games.</p>
     </footer>
 
 </body>
