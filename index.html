@@ -73,7 +73,7 @@
             z-index: 2;
             text-align: center;
             padding: 20px;
-            max-width: 1000px; /* Aumentado un poco para que quepa el texto */
+            max-width: 1000px; 
             animation: fadeUp 1.2s ease-out;
         }
 
@@ -91,9 +91,8 @@
             backdrop-filter: blur(5px);
         }
 
-        /* --- TÍTULO PRINCIPAL (MODIFICADO) --- */
+        /* --- TÍTULO PRINCIPAL --- */
         .hero h1 {
-            /* Ajustamos el tamaño para que quepa todo en una línea */
             font-size: clamp(2.5rem, 6vw, 5.5rem); 
             font-weight: 900;
             line-height: 1.1;
@@ -101,22 +100,32 @@
             color: #fff;
             text-shadow: 0 5px 20px rgba(0,0,0,0.9);
             
-            /* ESTO asegura que NEW WORLD y RP no se separen */
+            /* Alineación perfecta en una línea */
             white-space: nowrap; 
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 15px; /* Espacio entre las palabras y el RP */
-            flex-wrap: wrap; /* En móviles muy pequeños, permite bajar si es necesario */
+            gap: 15px; 
+            flex-wrap: wrap; 
         }
 
-        /* --- NEÓN RP HUECO (CORREGIDO) --- */
+        /* --- ESTILO RP NUEVO (GRADIENTE DE ORO) --- */
+        /* Eliminamos el borde hueco y ponemos un relleno de oro limpio */
         .hero h1 span { 
-            color: transparent; /* Interior transparente */
-            /* Borde dorado sólido */
-            -webkit-text-stroke: 2px var(--accent-gold); 
-            /* Filtro de sombra para simular luz de neón real alrededor del borde */
-            filter: drop-shadow(0 0 5px var(--accent-gold)) drop-shadow(0 0 15px var(--accent-gold));
+            /* Esto crea un degradado de oro dentro de las letras */
+            background: linear-gradient(180deg, #fff176 0%, #ffc107 40%, #ff6f00 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            
+            /* Hacemos el texto transparente para ver el fondo dorado */
+            color: transparent; 
+            -webkit-text-fill-color: transparent; 
+            
+            /* Eliminamos el borde problemático */
+            -webkit-text-stroke: 0;
+            
+            /* Añadimos un resplandor limpio detrás */
+            filter: drop-shadow(0 0 15px rgba(255, 160, 0, 0.6));
             
             position: relative;
             display: inline-block;
